@@ -28,4 +28,4 @@ class LJXRequest {
   }
 }
 
-export const ljxRequest = new LJXRequest("https://coderwhy-music.vercel.app")
+export const ljxRequest = new LJXRequest("http://codercba.com:9002")

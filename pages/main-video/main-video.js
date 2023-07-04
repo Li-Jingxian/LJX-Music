@@ -1,66 +1,52 @@
 // pages/main-video/main-video.js
+import { getTopMV } from "../../service/video"
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    videoList: [],
+    offset: 0,
+    hasMore: true
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onLoad() {
+    //发送网络请求
+    this.fetchTopMV()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  //发送网络请求的方法
+  async fetchTopMV() {
+    const res = await getTopMV(this.data.offset)
+    const newVideoList = [...this.data.videoList, ...res.data]
+    this.setData({ videoList: newVideoList })
+    this.data.offset = this.data.videoList.length
+    this.data.hasMore = res.hasMore
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
+  //监听上拉和下拉功能
   onReachBottom() {
-
+    if (!this.data.hasMore) return
+    this.fetchTopMV()
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
+  //下拉刷新的监听
+  async onPullDownRefresh() {
+    //清空之前的数据
+    this.setData({ videoList: [] })
+    this.data.offset = 0
+    this.data.hasMore = true
 
+    //重新请求新的数据
+    await this.fetchTopMV()
+
+    //停止下拉刷新
+    wx.stopPullDownRefresh()
+  },
+
+  //界面事件监听的方法
+  onVideoItemTap(event) {
+    const item = event.currentTarget.dataset.item
+    wx.navigateTo({
+      url: `/pages/detail-video/detail-video?id=${item.id}`,
+    })
   }
 })
