@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "video-list-item2": "/components/video-list-item2/index"
+  }
 }

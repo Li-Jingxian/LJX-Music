@@ -18,3 +18,21 @@ export function getMVUrl(id) {
     }
   })
 }
+
+export function getMVInfo(mvid) {
+  return ljxRequest.get({
+    url: "/mv/detail",
+    data: {
+      mvid
+    }
+  })
+}
+
+export function getMVRelated(id) {
+  return ljxRequest.get({
+    url: "/related/allvideo",
+    data: {
+      id
+    }
+  })
+}
