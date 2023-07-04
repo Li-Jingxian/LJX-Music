@@ -9,7 +9,7 @@ function formatCount(count) {
     return count
   }
 }
-console.log("111111");
+
 // 2 -> 02
 // 24 -> 24
 function padLeft(time) {
