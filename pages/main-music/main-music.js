@@ -1,7 +1,9 @@
 // pages/main-music/main-music.js
-import { getMusicBanner } from "../../service/music"
+import { getMusicBanner, getPlaylistDetail } from "../../service/music"
 import { querySelect } from "../../utils/query-select"
 import { throttle } from "../../utils/throttle"
+import recommendStore from "../../store/recommendStore"
+import recommentStore from "../../store/recommendStore"
 
 const querySelectThrottle = throttle(querySelect, 100)
 
@@ -9,11 +11,19 @@ Page({
   data: {
     searchValue: "",
     banners: [],
-    bannerHeight: 150
+    bannerHeight: 150,
+    recommendSongs: [],
+
   },
 
   onLoad() {
     this.fetchMusicBanners()
+    // this.fetchRecommendSongs()
+
+    recommendStore.onState("recommendSongs", (value) => {
+      this.setData({ recommendSongs: value.slice(0, 6) })
+    })
+    recommentStore.dispatch("fetchRecommendSongsAction")
   },
 
   async fetchMusicBanners() {
@@ -21,9 +31,22 @@ Page({
     this.setData({ banners: res.banners })
   },
 
+  // async fetchRecommendSongs() {
+  //   const res = await getPlaylistDetail(3778678)
+  //   const playlist = res.playlist
+  //   const recommendSongs = playlist.tracks.slice(0, 6)
+  //   this.setData({ recommendSongs })
+  // },
+
   onSearchClick() {
     wx.navigateTo({
       url: '/pages/detail-search/detail-search',
+    })
+  },
+
+  onRecommendMoreClick() {
+    wx.navigateTo({
+      url: '/pages/detail-song/detail-song?type=recommend',
     })
   },
 

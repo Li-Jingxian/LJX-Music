@@ -1,5 +1,5 @@
 // 封装成类 -> 实例
-// import { baseURL } from "./config"
+import { baseURL } from "./config"
 
 class LJXRequest {
   constructor(baseURL) {
@@ -28,4 +28,4 @@ class LJXRequest {
   }
 }
 
-export const ljxRequest = new LJXRequest("http://codercba.com:9002")
+export const ljxRequest = new LJXRequest(baseURL)

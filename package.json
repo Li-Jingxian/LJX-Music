@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@vant/weapp": "^1.10.20"
+    "@vant/weapp": "^1.10.20",
+    "hy-event-store": "^1.3.1"
   }
 }
