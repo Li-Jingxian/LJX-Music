@@ -17,3 +17,21 @@ export function getPlaylistDetail(id) {
     }
   })
 }
+
+export function getSongMenuList(cat = "全部", limit = 6, offset = 0) {
+  return ljxRequest.get({
+    url: "/top/playlist",
+    data: {
+      cat,
+      limit,
+      offset
+    }
+  })
+}
+
+export function getSongMenuTag() {
+  return ljxRequest.get({
+    url: "/playlist/hot"
+  })
+}
+

@@ -9,7 +9,7 @@
 />
 
 <!-- 2.轮播图 -->
-<swiper class="banner" circular indicator-dots autoplay style="height: {{bannerHeight}}px;">
+<swiper class="banner" circular indicator-dots autoplay style="height: {{bannerHeight}}px;" wx:if="{{banners.length}}">
   <block wx:for="{{banners}}" wx:key="targetId">
     <swiper-item class="item">
       <image class="banner-image" src="{{item.imageUrl}}" mode="widthFix" bindload="onBannerLoad"></image>
@@ -25,4 +25,18 @@
       <song-item-v1 itemData="{{item}}" bindtap="onRecommendItemTap" data-item="{{item}}" data-index="{{index}}"/>
     </block>
   </view> 
+</view>
+
+<!-- 4.歌单信息 -->
+<menu-area title="热门歌单" menuList="{{hotMenuList}}"/>
+<menu-area title="推荐歌单" menuList="{{recMenuList}}"/>
+
+<!-- 5.巅峰榜 -->
+<view class="ranking" wx:if="{{isRankingData}}">
+  <area-header title="巅峰榜" hasMore="{{false}}"/>
+  <view class="ranking-list">
+    <block wx:for="{{rankingInfos}}" wx:key="id">
+      <ranking-item itemData="{{item}}" key="{{index}}"/>
+    </block>
+  </view>
 </view>

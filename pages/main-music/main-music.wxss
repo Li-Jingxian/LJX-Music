@@ -3,7 +3,7 @@ page {
   --search-background-color: #fff;
   --search-padding: 10px 0;
   background-color: #fafafa;
-  padding: 0 24rpx;
+  padding: 0 24rpx 20rpx;
   box-sizing: border-box;
 }
 
