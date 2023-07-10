@@ -6,7 +6,7 @@
     "pages/detail-search/detail-search",
     "pages/detail-song/detail-song",
     "pages/detail-menu/detail-menu",
-    "components/song-item-v2/song-item-v2"
+    "pages/music-player/music-player"
   ],
   "window": {
     "backgroundTextStyle": "dark",
