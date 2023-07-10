@@ -25,7 +25,7 @@ Page({
       this.data.key = key
       rankingStore.onState(key, this.handleRanking)
     } else if (type === "recommend") {
-      recommendStore.onState("recommendSongInfo", this.handleRanking)
+      recommendStore.onState("recommendSongInfo", this.handleRecommend)
     } else if (type === "menu") {
       const id = options.id
       this.data.id = id
@@ -39,13 +39,18 @@ Page({
   },
 
   handleRanking(value) {
-    // if (this.data.type === "recommend") {
-    //   value.name = "推荐歌曲"
-    // }
     this.setData({ songInfo: value })
     wx.setNavigationBarTitle({
       title: value.name,
     })
+  },
+
+  handleRecommend(value) {
+    console.log(value);
+    wx.setNavigationBarTitle({
+      title: "推荐歌曲",
+    })
+    this.setData({ songInfo: { tracks: value } })
   },
 
   onUnload() {
