@@ -9,7 +9,7 @@ const querySelectThrottle = throttle(querySelect, 100)
 
 Page({
   data: {
-    searchValue: "",
+    searchValue1: "",
     banners: [],
     bannerHeight: 150,
     recommendSongs: [],
