@@ -135,6 +135,12 @@ Page({
     const currentPage = event.detail.current
     this.setData({ currentPage })
   },
+
+  onNavTabItemTap(event) {
+    const index = event.currentTarget.dataset.index
+    this.setData({ currentPage: index})
+  },
+
   onBackTap() {
     wx.navigateBack()
   },
