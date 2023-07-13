@@ -2,7 +2,7 @@
 <!-- 1.video组件播放视频 -->
 <video class="video" src="{{mvUrl}}" autoplay="{{true}}" danmu-list="{{damuList}}" referrer-policy="origin" />
 
-<wxs src="../../utils/format.wxs" module="format"></wxs>
+<wxs src="../../../utils/format.wxs" module="format"></wxs>
 <scroll-view class="content" scroll-y>
   <view class="info">
     <view class="title">{{ mvInfo.name }}</view>
