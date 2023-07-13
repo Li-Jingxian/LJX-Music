@@ -1,8 +1,8 @@
 // pages/music-player/music-player.js
-import { getSongDetail, getSongLyric } from "../../service/player"
+import { getSongDetail, getSongLyric } from "../../../service/player"
 import { throttle } from "underscore"
-import { parseLyric } from "../../utils/parse-lyric"
-import playerStore from "../../store/playerStore"
+import { parseLyric } from "../../../utils/parse-lyric"
+import playerStore from "../../../store/playerStore"
 
 const app = getApp()
 const audioContext = wx.createInnerAudioContext()
